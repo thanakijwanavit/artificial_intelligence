@@ -16,6 +16,16 @@ units = extract_units(unitlist, boxes)
 peers = extract_peers(units, boxes)
 
 
+
+
+################## custom functions ########################
+def check_if_solved(values):
+    ## check if sudoku is solved
+    if all(len(values[key]) == 1 for key in boxes):
+        return values # sudoku is solved
+    else:
+        False
+
 def naked_twins(values):
     """Eliminate values using the naked twins strategy.
 
@@ -54,8 +64,9 @@ def naked_twins(values):
     https://github.com/udacity/artificial-intelligence/blob/master/Projects/1_Sudoku/pseudocode.md
     """
     # TODO: Implement this function!
-    raise NotImplementedError
-
+    
+   # ''
+    
 
 def eliminate(values):
     """Apply the eliminate strategy to a Sudoku puzzle
@@ -74,7 +85,7 @@ def eliminate(values):
         The values dictionary with the assigned values eliminated from peers
     """
     # TODO: Copy your code from the classroom to complete this function
-    raise NotImplementedError
+    ''
 
 
 def only_choice(values):
@@ -98,7 +109,7 @@ def only_choice(values):
     You should be able to complete this function by copying your code from the classroom
     """
     # TODO: Copy your code from the classroom to complete this function
-    raise NotImplementedError
+    ''
 
 
 def reduce_puzzle(values):
@@ -116,7 +127,7 @@ def reduce_puzzle(values):
         no longer produces any changes, or False if the puzzle is unsolvable 
     """
     # TODO: Copy your code from the classroom and modify it to complete this function
-    raise NotImplementedError
+    ''
 
 
 def search(values):
@@ -139,7 +150,19 @@ def search(values):
     and extending it to call the naked twins strategy.
     """
     # TODO: Copy your code from the classroom to complete this function
-    raise NotImplementedError
+    #''
+    # reduce puzzle first
+    values = reduce_puzzle(values)
+    if values==False:
+        return False
+    ## check if sudoku is solved
+    solved_sudoku= check_if_solved(values)
+    if solved_sudoku:
+        return solved_sudoku
+    # suduoku is not solvable by elimination, start choosing possible values
+    n, keys_to_try = min((len(values[key]),key) for key in boxes if len(values[key]) > 1)
+
+
 
 
 def solve(grid):
