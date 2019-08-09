@@ -205,16 +205,16 @@ def naked_twins(values):
             duplicate_values=[item for item, count in collections.Counter(two_value_dict.values()).items() if count > 1]
             if duplicate_values:
                 for duplicate_value in duplicate_values:
-                    copy_new_sudoku=new_sudoku.copy()
+                    #copy_new_sudoku=new_sudoku.copy()
                     new_sudoku=remove_value_from(unit,duplicate_value,new_sudoku,exception=[key for key in unit if new_sudoku[key]==duplicate_value])
-                    if copy_new_sudoku != new_sudoku:
-                        print(f'found duplicate values of {duplicate_values}')
-                        print(f'dict_before and after removing duplicats')
-                        display(copy_new_sudoku)
-                        display(new_sudoku)
+                    #if copy_new_sudoku != new_sudoku:
+                        #print(f'found duplicate values of {duplicate_values}')
+                        #print(f'dict_before and after removing duplicats')
+                        #display(copy_new_sudoku)
+                        #display(new_sudoku)
         if original_sudoku == new_sudoku:
             stall=True
-        print('loop finished')
+        #print('loop finished')
     return new_sudoku
     
 
