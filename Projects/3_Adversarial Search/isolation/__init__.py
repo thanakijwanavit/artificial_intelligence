@@ -156,6 +156,12 @@ def _play(agents, game_state, time_limit, match_id, debug=False):
         status = Status.GAME_OVER
         if game_state.utility(active_idx) > 0:
             winner, loser = loser, winner  # swap winner/loser if active player won
+        #record result for player
+        winner_player = winner[0](0)
+        winner_player.record_result(True)
+        loser_player = loser[0](0)
+        loser_player.record_result(False)
+        
 
     logger.info(RESULT_INFO.format(status, game_state, game_history, winner, loser))
     return winner, game_history, match_id

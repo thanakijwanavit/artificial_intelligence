@@ -16,6 +16,8 @@ class BasePlayer:
         self.context = None
         self.data = None
 
+    def record_result(self, win):
+        pass
     def get_action(self, state):
         """ Implement a function that calls self.queue.put(ACTION) within the allowed time limit 
 
